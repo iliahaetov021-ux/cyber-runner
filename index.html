@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>CyberRunner: Net Breach</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <!-- Анимированная 3D-сетка горизонта -->
+    <div class="cyber-grid-bg">
+      <div class="grid-horizon"></div>
+      <div class="grid-lines"></div>
+      <div class="scanlines"></div>
+    </div>
+
+    <div id="app">
+      <!-- Всплывающий тост достижения -->
+      <div id="achievement-toast" class="toast hidden">
+        <div class="toast-icon" id="toast-icon">🏆</div>
+        <div class="toast-body">
+          <div class="toast-header" id="toast-header">ДОСТИЖЕНИЕ ПОЛУЧЕНО</div>
+          <div class="toast-title" id="toast-title">Название</div>
+          <div class="toast-reward" id="toast-reward">+25 💎</div>
+        </div>
+      </div>
+
+      <!-- Верхнее меню -->
+      <div class="top-nav">
+        <div class="meta-chips-badge" id="chips-display" title="Нейрочипы">💎 <span id="chips-count">0</span></div>
+        <button id="ach-menu-btn" class="nav-btn" title="Достижения">🏆</button>
+        <button id="char-menu-btn" class="nav-btn" title="Выбор оперативника">👤</button>
+        <button id="sound-toggle" class="nav-btn" title="Звук">🔊</button>
+        <button id="lang-toggle" class="nav-btn" title="Язык">EN</button>
+      </div>
+
+      <header class="stats-bar">
+        <div class="stat-item" id="stat-hack" title="Взлом / Hacking">
+          <div class="stat-delta"></div>
+          <div class="stat-dot"></div>
+          <span class="stat-icon">💻</span>
+          <div class="stat-track"><div class="stat-fill" style="width: 50%;"></div></div>
+        </div>
+        <div class="stat-item" id="stat-sync" title="Синхронизация / Sync">
+          <div class="stat-delta"></div>
+          <div class="stat-dot"></div>
+          <span class="stat-icon">🔋</span>
+          <div class="stat-track"><div class="stat-fill" style="width: 50%;"></div></div>
+        </div>
+        <div class="stat-item" id="stat-wanted" title="Розыск / Wanted">
+          <div class="stat-delta"></div>
+          <div class="stat-dot"></div>
+          <span class="stat-icon">👁️</span>
+          <div class="stat-track"><div class="stat-fill" style="width: 20%;"></div></div>
+        </div>
+        <div class="stat-item" id="stat-credits" title="Кредиты / Credits">
+          <div class="stat-delta"></div>
+          <div class="stat-dot"></div>
+          <span class="stat-icon">💰</span>
+          <div class="stat-track"><div class="stat-fill" style="width: 50%;"></div></div>
+        </div>
+      </header>
+
+      <div class="day-counter">
+        <span id="active-char-name" class="char-badge-tag"></span>
+        <span id="label-cycle">Цикл</span>: <span id="days-count">1</span>
+      </div>
+
+      <div class="action-preview" id="choice-action-text"></div>
+
+      <!-- Игровая зона: карточка с динамическими VFX -->
+      <main class="card-container">
+        <div class="card" id="active-card">
+          <!-- Контейнеры спецэффектов (радиоволны / боевые искры / гексагоны) -->
+          <div class="vfx-overlay" id="vfx-waves">
+            <div class="wave wave-1"></div>
+            <div class="wave wave-2"></div>
+            <div class="wave wave-3"></div>
+          </div>
+          <div class="vfx-overlay" id="vfx-sparks">
+            <div class="spark s1"></div>
+            <div class="spark s2"></div>
+            <div class="spark s3"></div>
+          </div>
+
+          <div class="card-badge left-badge" id="badge-left">ОТКАЗ</div>
+          <div class="card-badge right-badge" id="badge-right">ПРИНЯТЬ</div>
+          <div class="card-avatar" id="card-avatar"></div>
+          <h2 class="card-speaker" id="card-speaker">Сканер</h2>
+          <p class="card-text" id="card-text">Подключение к сети...</p>
+        </div>
+      </main>
+
+      <footer class="pc-controls-hint" id="pc-hint">
+        ← / → клавиши или свайп
+      </footer>
+
+      <!-- Окно Game Over -->
+      <div class="game-over-overlay hidden" id="game-over">
+        <div class="death-art" id="death-art"></div>
+        <h2 id="death-title">СИСТЕМА ОТКЛЮЧЕНА</h2>
+        <p id="death-desc">Причина гибели...</p>
+        <button id="restart-btn">Перезагрузка нейросети</button>
+      </div>
+
+      <!-- Модальное окно персонажей -->
+      <div class="modal-overlay hidden" id="char-modal">
+        <div class="modal-window">
+          <div class="modal-header">
+            <h3 id="char-modal-title">ВЫБОР ОПЕРАТИВНИКА</h3>
+            <button class="modal-close-btn" id="char-modal-close">✕</button>
+          </div>
+          <div class="char-list" id="char-list"></div>
+        </div>
+      </div>
+
+      <!-- Модальное окно достижений -->
+      <div class="modal-overlay hidden" id="ach-modal">
+        <div class="modal-window">
+          <div class="modal-header">
+            <h3 id="ach-modal-title">ДОСТИЖЕНИЯ СЕТИ</h3>
+            <button class="modal-close-btn" id="ach-modal-close">✕</button>
+          </div>
+          <div class="ach-list" id="ach-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
